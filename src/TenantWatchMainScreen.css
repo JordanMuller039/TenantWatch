@@ -1,57 +1,54 @@
-.mainscreen-container {
+/* TenantWatchMainScreen.css - Complete Styling */
+
+/* Base Container */
+.tenantwatch-container {
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  padding-top: 70px;
-  align-items: center;
-  height: calc(100vh - 70px);
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
   position: relative;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
 }
 
-.mainscreen-container::before {
+/* Background Pattern */
+.tenantwatch-container::before {
   content: "";
   position: absolute;
-  bottom: 0; 
-  left: 0;
-  width: 100%;
-  height: 100%; 
-  background-image: url('./images/geometric-pattern-background.jpeg');
-  background-repeat: repeat-y; 
-  background-position: center; 
-  background-size: 100%; 
-  opacity: 0.8; 
-  z-index: -1; 
-}
-
-.mainscreen-content-box {
-  transition: transform 0.3s ease-in-out;
-  position: relative;
-  z-index: 2;
-  background-color: white;
-}
-
-.mainscreen-content-box.shift-left {
-  transform: translateX(-40%);
-}
-
-.top-menu-bar {
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
+  background-image: url('./images/geometric-pattern-background.jpeg');
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+/* Fixed Top Navigation Bar */
+.top-menu-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
   background-color: #7a0a0a;
-  padding: 15px 20px;
+  padding: 12px 20px;
   z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
 }
 
 .top-menu-bar ul {
   display: flex;
   list-style: none;
-  margin: 0;
   padding: 0;
-  gap: 30px;
-  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  justify-content: center;
+  margin: 0;
 }
 
 .top-menu-bar li {
@@ -59,291 +56,145 @@
   cursor: pointer;
   font-size: 16px;
   transition: all 0.2s ease;
-  padding: 5px 10px;
+  padding: 5px 0;
+  white-space: nowrap;
 }
 
-.top-menu-bar li:hover,
+.top-menu-bar li:hover {
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
 .top-menu-bar li.active {
   font-weight: bold;
+  text-decoration: underline;
 }
 
-.logo {
-  width: 200px;
-  margin-bottom: 30px;
-}
-
-.search-bar {
-  width: 80%;
-  height: 40px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 0 15px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease; /* Transition for smooth effect */
-}
-
-.search-bar:hover {
-  transform: scale(1.05); /* Grow the search bar on hover */
-  border-color: #007AFF;
-  box-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
-}
-
-.search-bar-focused {
-  border-color: #007AFF;
-  box-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
-}
-
-.file-complaint-button {
-  background-color: #9B0D0D;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.file-complaint-button:hover {
-  background-color: #7a0a0a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.container {
+/* Avatar Styles */
+.avatar-item {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  position: relative;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
-}
-
-.menu-bar {
+  gap: 10px;
   position: absolute;
-  top: 20px;
   left: 20px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255,255,255,0.3);
 }
 
-.menu-icon {
-  width: 40px;
-  cursor: pointer;
+.avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
 }
 
-.content-box {
+.avatar-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Main Content Area */
+.tenantwatch-content-box {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 400px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  padding: 20px;
+  padding: 30px;
   position: relative;
   z-index: 1;
-}
-
-.logo {
-  width: 200px;
-  margin-bottom: 30px;
-}
-
-.search-bar {
-  width: 80%;
-  height: 40px;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 0 15px;
-  font-size: 16px;
-  margin-bottom: 20px;
-  transition: all 0.3s ease; /* Transition for smooth effect */
-}
-
-.search-bar:hover {
-  transform: scale(1.05); /* Grow the search bar on hover */
-  border-color: #007AFF;
-  box-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
-}
-
-.search-bar-focused {
-  border-color: #007AFF;
-  box-shadow: 0 0 5px rgba(0, 122, 255, 0.3);
-}
-
-.file-complaint-button {
-  background-color: #9B0D0D;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.file-complaint-button:hover {
-  background-color: #7a0a0a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.recent-complaints-container {
-  width: 100%;
-  margin-top: 50px; 
-  background-color: rgba(255, 255, 255, 0.9);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease; 
-}
-
-.recent-complaints-container:hover {
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); 
-}
-
-.recent-complaints-title {
-  text-align: center;
-  color: #9B0D0D;
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.main-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+  transition: transform 0.3s ease-in-out;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
 }
-.complaints-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 0 20px;
+
+.tenantwatch-content-box.shift-left {
+  transform: translateX(-30%);
 }
 
-.complaint-card {
-  background-color: white;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 1px solid #ddd;
+/* Logo Styling */
+.tenantwatch-logo {
+  max-width: 280px;
+  height: auto;
+  margin-bottom: 30px;
 }
 
-.complaint-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-  border-color: #9B0D0D;
-}
-
-.complaint-card h3 {
-  margin-bottom: 10px;
-  color: #9B0D0D;
-  font-size: 1.1rem;
-}
-
-.complaint-description {
-  color: #666;
-  margin-bottom: 10px;
-  font-size: 0.9rem;
-}
-
-.complaint-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: #888;
-}
-
-.complaint-status {
-  text-transform: capitalize;
-  font-weight: bold;
-  color: #9B0D0D;
-}
-
-.complaint-date {
-  opacity: 0.7;
-}
-
-/* Scroll bar styling to match the design */
-.recent-complaints-container::-webkit-scrollbar {
-  width: 8px;
-}
-
-.recent-complaints-container::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-.recent-complaints-container::-webkit-scrollbar-thumb {
-  background: #9B0D0D;
-  border-radius: 10px;
-}
-
-.recent-complaints-container::-webkit-scrollbar-thumb:hover {
-  background: #7a0a0a;
-}
-
-/* Modal Styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
+/* Search Components */
+.search-container {
+  position: relative;
   width: 80%;
   max-width: 600px;
-  text-align: left;
+  margin-bottom: 30px;
 }
 
-.modal button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
+.search-bar {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 0 20px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #9B0D0D;
+  box-shadow: 0 0 0 2px rgba(155, 13, 13, 0.2);
+}
+
+.search-bar-focused {
+  border-color: #9B0D0D;
+  box-shadow: 0 0 0 2px rgba(155, 13, 13, 0.2);
+}
+
+.animated-placeholder {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* File Complaint Button */
+.file-complaint-button {
+  background-color: #9B0D0D;
   color: white;
   border: none;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.modal button:hover {
-  background-color: #0056b3;
+.file-complaint-button:hover {
+  background-color: #7a0a0a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Complaints Panel */
 .complaints-container {
   position: fixed;
-  top: 50%;
+  top: 80px;
   right: -40%;
-  transform: translateY(-50%);
   width: 40%;
-  height: 80vh;
+  height: calc(100vh - 80px);
   background: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  border-radius: 20px 0 0 20px;
-  padding: 20px;
+  padding: 30px;
   overflow-y: auto;
   transition: right 0.3s ease-in-out;
-  z-index: 1;
+  z-index: 2;
 }
 
 .complaints-container.show {
@@ -353,115 +204,136 @@
 .complaint-card {
   background: #fff;
   border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   border-left: 4px solid #9B0D0D;
 }
 
 .complaint-card h3 {
   color: #9B0D0D;
-  margin: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
 }
 
 .complaint-details p {
-  margin: 5px 0;
-  font-size: 0.9em;
+  margin: 8px 0;
+  font-size: 0.95rem;
   color: #555;
+  line-height: 1.5;
 }
 
-.severity-4 { color: #9B0D0D; font-weight: bold; }
-.severity-3 { color: #d35400; font-weight: bold; }
-.severity-2 { color: #f1c40f; font-weight: bold; }
-.severity-1 { color: #2ecc71; font-weight: bold; }
+.complaint-details strong {
+  color: #333;
+}
 
+/* Severity Indicators */
+.severity-4 { color: #9B0D0D; }
+.severity-3 { color: #d35400; }
+.severity-2 { color: #f1c40f; }
+.severity-1 { color: #2ecc71; }
+
+/* No Results Message */
 .no-results {
   text-align: center;
-  padding: 20px;
+  padding: 30px;
   color: #666;
-  font-style: italic;
+  font-size: 1rem;
 }
 
-/* Add this to existing media queries if needed */
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .complaints-container {
+    width: 50%;
+    right: -50%;
+  }
+  
+  .tenantwatch-content-box.shift-left {
+    transform: translateX(-40%);
+  }
+}
+
+@media (max-width: 992px) {
+  .top-menu-bar ul {
+    gap: 15px;
+  }
+  
+  .tenantwatch-logo {
+    max-width: 240px;
+  }
+}
+
 @media (max-width: 768px) {
-  .content-box.shift-left {
-    transform: translateX(-70%);
+  .complaints-container {
+    width: 80%;
+    right: -80%;
+  }
+  
+  .tenantwatch-content-box.shift-left {
+    transform: translateX(-60%);
+  }
+  
+  .top-menu-bar ul {
+    gap: 12px;
+  }
+  
+  .avatar-name {
+    display: none;
+  }
+  
+  .search-container {
+    width: 90%;
+  }
+  
+  .avatar-item {
+    left: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .top-menu-bar {
+    padding: 10px 15px;
+  }
+  
+  .top-menu-bar li {
+    font-size: 14px;
+  }
+  
+  .avatar-item {
+    padding-right: 10px;
+  }
+  
+  .tenantwatch-content-box {
+    padding: 30px 15px;
+  }
+  
+  .file-complaint-button {
+    padding: 12px 30px;
+    font-size: 16px;
   }
   
   .complaints-container {
-    width: 70%;
-    right: -70%;
+    width: 90%;
+    right: -90%;
+    padding: 20px;
+  }
+  
+  .tenantwatch-content-box.shift-left {
+    transform: translateX(-70%);
   }
 }
 
-.search-container {
-  position: relative;
-  width: 80%;
-  margin-bottom: 0px;
-}
-
-.animated-placeholder {
-  position: absolute;
-  left: 30px;
-  top: 35%;
-  transform: translateY(-50%);
-  color: #999;
-  pointer-events: none;
-  animation: fadeCycle 3s infinite;
-  opacity: 0;
-}
-
-@keyframes fadeCycle {
-  0% { opacity: 0; transform: translateY(-50%) translateX(10px); }
-  20% { opacity: 1; transform: translateY(-50%) translateX(0); }
-  80% { opacity: 1; transform: translateY(-50%) translateX(0); }
-  100% { opacity: 0; transform: translateY(-50%) translateX(-10px); }
-}
-
-/* Update the search bar padding to prevent text overlap */
-.search-bar {
-  /* ... existing styles ... */
-  padding: 0 15px;
-  position: relative;
-  right: -10px;
-  z-index: 1;
-  background: transparent;
-}
-
-/* Avatar Styles */
-.top-menu-bar li.avatar-item {
-  padding: 0;
-  margin-right: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.avatar-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid white;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-
-/* Adjust menu alignment */
-.top-menu-bar ul {
-  align-items: center;
-}
-
-.avatar-name {
-  margin-left: 10px;
-  color: white;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.avatar-item {
-  display: flex !important;
-  align-items: center;
-  gap: 10px;
-  padding-right: 20px !important;
-  border-right: 1px solid rgba(255,255,255,0.3);
+@media (max-width: 400px) {
+  .top-menu-bar ul {
+    gap: 8px;
+  }
+  
+  .top-menu-bar li {
+    font-size: 13px;
+  }
+  
+  .avatar-img {
+    width: 30px;
+    height: 30px;
+  }
 }

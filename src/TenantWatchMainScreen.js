@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './TenantWatchMainScreen.css';
 import logo from './images/logoNEW.png';
-import menuIcon from './images/menu.png';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery, gql } from '@apollo/client';
 import { useNhostClient } from '@nhost/react';  
@@ -36,7 +35,6 @@ const TenantWatchMainScreen = () => {
   const avatarUrl = useUserAvatarUrl();
   const userId = useUserId();
   const displayName = useUserDisplayName();
-  const [userRole, setUserRole] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const navigate = useNavigate();
@@ -60,41 +58,8 @@ const TenantWatchMainScreen = () => {
     onCompleted: () => setShowComplaintsPanel(!!searchInput)
   });
 
-  // DEBUGGING USERS ROLES
-  /*
-  const fetchUserRole = async () => {
-    try {
-      // Get the current session
-      const session = nhost.auth.getSession();
-      
-      if (session) {
-        // Access the JWT claims directly from accessTokenClaims
-        if (session.accessTokenClaims && session.accessTokenClaims["x-hasura-default-role"]) {
-          setUserRole(session.accessTokenClaims["x-hasura-default-role"]);
-        }
-        // Fallback to accessing claims in a different location if needed
-        else if (session.accessToken && session.accessToken.claims && 
-                 session.accessToken.claims["x-hasura-default-role"]) {
-          setUserRole(session.accessToken.claims["x-hasura-default-role"]);
-        }
-        // Default to 'user' if no role is found but the user is authenticated
-        else if (userId) {
-          setUserRole('user');
-        }
-        else {
-          setUserRole('No role found');
-        }
-      } else {
-        setUserRole('Not logged in');
-      }
-    } catch (error) {
-      console.error('Error fetching user role:', error);
-      setUserRole('Error retrieving role');
-    }
-  };
-  */
-
   const menuItems = [
+    { path: '/tenantwatch', label: 'Home' },
     { path: '/account', label: 'Account' },
     { path: '/complaints', label: 'Complaints' },
     { path: '/settings', label: 'Settings' },
@@ -110,9 +75,10 @@ const TenantWatchMainScreen = () => {
   }, [isSearchFocused, searchInput, placeholders.length]);
 
   return (
-    <div className="container">
+    <div className="tenantwatch-container">
+      {/* Top Menu Bar */}
       <div className="top-menu-bar">
-        <ul> 
+        <ul>
           {userId && (
             <li className="avatar-item">
               <img 
@@ -136,8 +102,8 @@ const TenantWatchMainScreen = () => {
         </ul>
       </div>
 
-      <div className={`content-box ${showComplaintsPanel ? 'shift-left' : ''}`}>
-        <img src={logo} alt="Tenant Watch Logo" className="logo" />
+      <div className={`tenantwatch-content-box ${showComplaintsPanel ? 'shift-left' : ''}`}>
+        <img src={logo} alt="Tenant Watch Logo" className="tenantwatch-logo" />
         
         <div className="search-container">
           <input
@@ -159,12 +125,6 @@ const TenantWatchMainScreen = () => {
           File Complaint
         </button>
         
-        {/* DEBUG ROLE 
-        <button className="role-button" onClick={fetchUserRole}>
-          Show My Role
-        </button>
-        {userRole && <p className="role-display">Role: {userRole}</p>} */}
-
         {loading && <p>Loading complaints...</p>}
         {error && <p>Error fetching complaints: {error.message}</p>}
       </div>

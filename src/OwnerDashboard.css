@@ -1,299 +1,339 @@
+/* Base Styles */
+.dashboard-app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+}
+
 /* Top Menu Bar */
 .top-menu-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #7a0a0a;
-    padding: 15px 20px;
-    z-index: 1000;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #7a0a0a;
+  padding: 12px 20px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.top-menu-bar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+  align-items: center;
+}
+
+.top-menu-bar li {
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  padding: 5px 0;
+}
+
+.top-menu-bar li:hover {
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
+.avatar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: auto;
+}
+
+.avatar-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.avatar-name {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Main Content Container */
+.dashboard-content-container {
+  flex: 1;
+  padding: 30px;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-logo {
+  max-width: 280px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.dashboard-title {
+  color: #9B0D0D;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.company-section h4 {
+  font-size: 1.4rem;
+  color: #333;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+  display: flex;
+  background-color: #f1f1f1;
+  border-radius: 8px 8px 0 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tab-navigation::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-button {
+  padding: 16px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #555;
+  white-space: nowrap;
+}
+
+.tab-button:hover {
+  background-color: #e0e0e0;
+}
+
+.tab-button.active {
+  color: #9B0D0D;
+  background-color: white;
+  border-bottom: 3px solid #9B0D0D;
+}
+
+/* Tab Content Container */
+.tab-content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.tab-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.subheading {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Cards Layout */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-color: #ddd;
+}
+
+.card h3 {
+  color: #9B0D0D;
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.card p {
+  color: #555;
+  font-size: 0.95rem;
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.property-details span, .card span:not(.bin-icon) {
+  font-weight: 600;
+  color: #444;
+}
+
+/* Status Indicators */
+.status-open {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.status-in-progress {
+  color: #f39c12;
+  font-weight: 600;
+}
+
+.status-resolved {
+  color: #27ae60;
+  font-weight: 600;
+}
+
+/* Buttons */
+.add-button {
+  background-color: #9B0D0D;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.add-button:hover {
+  background-color: #7a0a0a;
+  transform: translateY(-1px);
+}
+
+.manager-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 12px;
+}
+
+.permissions-button {
+  background-color: #9B0D0D;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.permissions-button:hover {
+  background-color: #7a0a0a;
+}
+
+.delete-button {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+  border-color: #e74c3c;
+  background-color: #ffeeee;
+}
+
+.bin-icon {
+  font-style: normal;
+  transition: all 0.2s ease;
+}
+
+.delete-button:hover .bin-icon {
+  color: #e74c3c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+  .dashboard-content-container {
+    padding: 25px;
   }
   
-  .top-menu-bar ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 30px;
-    justify-content: flex-start;
+  .cards-container {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-content-container {
+    padding: 15px;
   }
   
-  .top-menu-bar li {
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.2s ease;
-    padding: 5px 10px;
+  .dashboard-logo {
+    max-width: 220px;
   }
   
-  .top-menu-bar li:hover, .top-menu-bar li.active {
-    font-weight: bold;
+  .dashboard-title {
+    font-size: 1.8rem;
   }
   
-  .avatar-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .avatar-img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .avatar-name {
-    color: white;
-    font-size: 14px;
-  }
-  
-  /* General container for the dashboard */
-  .dashboard-container {
-    display: flex;
-    justify-content: center;
-    padding-top: 70px;
-    align-items: center;
-    height: calc(100vh - 70px);
-    position: relative;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-    margin-top: 40px; /* Added margin to accommodate fixed menu bar */
-  }
-  
-  .dashboard-container::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('./images/geometric-pattern-background.jpeg');
-    background-repeat: repeat-y;
-    background-position: center;
-    background-size: 100%;
-    opacity: 0.8;
-    z-index: -1;
-  }
-  
-  .dashboard-content-box {
-    transition: transform 0.3s ease-in-out;
-    position: relative;
-    z-index: 2;
-    background-color: white;
-    width: 1500px;
-    height: 650px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  
-  .title {
-    color: #9B0D0D;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .subheading {
-    color: #333;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
-    text-align: left;
-    padding-left: 10px;
-  }
-  
-  /* Tab Navigation */
   .tab-navigation {
-    display: flex;
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #ddd;
+    flex-wrap: wrap;
   }
   
   .tab-button {
-    padding: 16px 32px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    background: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: #555;
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
   
-  .tab-button:hover {
-    background-color: #e9e9e9;
-  }
-  
-  .tab-button.active {
-    color: #9B0D0D;
-    border-bottom: 3px solid #9B0D0D;
-    background-color: white;
-  }
-  
-  /* Tab Content */
   .tab-content {
-    flex: 1;
     padding: 20px;
-    overflow-y: auto;
   }
   
-  .dashboard-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 20px;
+  .subheading {
+    font-size: 1.3rem;
   }
-  
-  .managers-container, .properties-container, .complaints-container, .admin-container {
-    display: flex;
-    flex-direction: column;
+}
+
+@media (max-width: 480px) {
+  .top-menu-bar ul {
     gap: 15px;
   }
   
-  .manager-card, .property-card, .complaint-card {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee;
-  }
-  
-  .manager-card h3, .property-card h3, .complaint-card h3 {
-    color: #9B0D0D;
-    font-size: 1.2rem;
-    margin-bottom: 8px;
-  }
-  
-  .manager-card p, .property-card p, .complaint-card p {
-    color: #666;
-    font-size: 0.95rem;
-    margin: 4px 0;
-  }
-  
-  .property-details span {
-    font-weight: bold;
-    color: #444;
-  }
-  
-  .company-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-    gap: 15px;
-  }
-  
-  .company-section h4 {
-    font-size: 1.4rem;
-    color: #9B0D0D;
-    margin: 0;
-  }
-  
-  .avatar-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
-  .add-button {
-    background-color: #9B0D0D;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 1rem;
-    cursor: pointer;
-    align-self: flex-start;
-    margin-bottom: 15px;
-    transition: background-color 0.2s ease;
-  }
-  
-  .add-button:hover {
-    background-color: #7a0a0a;
-  }
-  
-  .tab-panel {
+  .avatar-name {
     display: none;
   }
   
-  .tab-panel.active {
-    display: block;
+  .cards-container {
+    grid-template-columns: 1fr;
   }
   
-  @media (max-width: 768px) {
-    .dashboard-content {
-      grid-template-columns: 1fr;
-    }
-  
-    .dashboard-content-box {
-      width: 95%;
-      height: 80vh;
-    }
-  
-    .title {
-      font-size: 1.6rem;
-    }
-  
-    .subheading {
-      font-size: 1.2rem;
-    }
-    
-    .tab-button {
-      padding: 12px 20px;
-      font-size: 0.9rem;
-    }
-
-/* Manager card action buttons */
-.manager-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 15px;
-    gap: 10px;
+  .card {
+    padding: 20px;
   }
-  
-  .permissions-button {
-    background-color: #9B0D0D;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 6px 12px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .permissions-button:hover {
-    background-color: #7a0a0a;
-  }
-  
-  .delete-button {
-    background: none;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 6px 10px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .delete-button:hover {
-    border-color: #e74c3c;
-  }
-  
-  .delete-button:hover .bin-icon {
-    color: #e74c3c;
-  }
-  
-  .bin-icon {
-    font-style: normal;
-    transition: color 0.2s ease;
-  }
-
-
-  
-
-  }
+}
