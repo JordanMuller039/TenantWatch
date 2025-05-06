@@ -1,50 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthenticationStatus, useSignInEmailPassword, useSignOut } from '@nhost/react';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import './LandingPage.css';
 import logo from './images/logoNEW.png';
 import eyeClosed from './images/eye-closed.png';
 import eyeOpen from './images/eye-open.png';
-
-// GraphQL query to check if an email exists in the Owners table
-const CHECK_OWNER_EMAIL = gql`
-  query CheckOwnerEmail($email: String!) {
-    Owners(where: { OwnerEmail: { _eq: $email } }) {
-      OwnerEmail
-    }
-  }
-`;
 
 const LandingPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoggingIn, setIsLoggingIn] = useState(false); // New state to control button text
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
   const { signInEmailPassword } = useSignInEmailPassword();
   const { isAuthenticated, isLoading: isAuthLoading } = useAuthenticationStatus();
   const navigate = useNavigate();
   const { signOut } = useSignOut();
-
-  // Query the database to check if the email exists in Owners
-  const { data, loading } = useQuery(CHECK_OWNER_EMAIL, {
-    variables: { email },
-    skip: !email, // Skip the query if email is empty
-  });
-
-  // Check authentication status and redirect accordingly
-  useEffect(() => {
-    if (isAuthenticated && !isAuthLoading) {
-      console.log('✅ User authenticated - checking role');
-      if (data?.Owners.length > 0) {
-        navigate('/OwnerDashboard', { replace: true });
-      } else {
-        navigate('/tenantwatch', { replace: true });
-      }
-    }
-  }, [isAuthenticated, isAuthLoading, navigate, data]);
 
   const handleForceSignOut = async () => {
     await signOut();
@@ -63,7 +34,7 @@ const LandingPage = () => {
 
     try {
       setError('');
-      setIsLoggingIn(true); // Set loading state when login starts
+      setIsLoggingIn(true);
 
       const { error: signInError } = await signInEmailPassword(email, password);
 
@@ -71,20 +42,27 @@ const LandingPage = () => {
         console.error('❌ Login failed:', signInError);
         setError(signInError.message);
       } else {
-        console.log('✅ Login successful');
-        // The useEffect will handle redirection once authentication state updates
+        // Redirect all authenticated users to OwnerDashboard
+        navigate('/OwnerDashboard', { replace: true });
       }
     } catch (error) {
       console.error('❌ Unexpected error during login:', error);
       setError('An unexpected error occurred. Please try again.');
     } finally {
-      setIsLoggingIn(false); // Reset loading state when login is finished
+      setIsLoggingIn(false);
     }
   };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
+
+  // Redirect if already authenticated
+  React.useEffect(() => {
+    if (isAuthenticated && !isAuthLoading) {
+      navigate('/OwnerDashboard', { replace: true });
+    }
+  }, [isAuthenticated, isAuthLoading, navigate]);
 
   return (
     <div className="container">
@@ -124,7 +102,7 @@ const LandingPage = () => {
           <button
             type="submit"
             className="login-button"
-            disabled={isLoggingIn || isAuthLoading || loading}
+            disabled={isLoggingIn || isAuthLoading}
           >
             {isLoggingIn ? (
               <div className="button-loading-state">
