@@ -1,5 +1,5 @@
-// Updated App.js
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Import necessary components and libraries
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Ensure these are imported
 import LandingPage from './LandingPage';
 import CreateAccount from './CreateAccount';
 import TenantWatchMainScreen from './TenantWatchMainScreen';
@@ -10,18 +10,18 @@ import Account from './Account';
 import ProtectedRoute from './ProtectedRoute';
 import OwnerDashboard from './OwnerDashboard';
 
+// Initialize NhostClient and Apollo Client
 const nhost = new NhostClient({
-  subdomain: 'mtxlfigknetlzoaylfnm',
+  subdomain: 'rhxqagmisemdmtoondjj',
   region: 'eu-west-2',
 });
 
 const client = new ApolloClient({
-  uri: 'https://mtxlfigknetlzoaylfnm.hasura.eu-west-2.nhost.run/v1/graphql',
+  uri: process.env.REACT_APP_HASURA_URL, // Access from .env
   cache: new InMemoryCache(),
   headers: {
-    'x-hasura-admin-secret': "-FHha1ImcTrMw*5lI(a!:%qE*29N&mI+",
+    'x-hasura-admin-secret': process.env.REACT_APP_HASURA_ADMIN_SECRET, // Access from .env
   }
-  
 });
 
 function App() {

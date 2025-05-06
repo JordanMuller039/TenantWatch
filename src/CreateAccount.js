@@ -45,61 +45,11 @@ const CreateAccount = () => {
             companyNumber
           }
         }
-      });
-      
-  
-      // Directly insert user into All_Users table
-      const insertUserMutation = `
-        mutation InsertUser($email: String!) {
-          insert_Base_one(object: { 
-            UserEmail: $email,
-            UserRole: "owner"
-          }) {
-            UserEmail
-          }
-        }
-      `;
-  
-      const { data: userData, error: insertError } = await nhost.graphql.request(insertUserMutation, { email });
-  
-
-
-      //const userID = userData.insert_All_Users_one.UserID;
-      // Insert into Owner table with retrieved UserID
-     /* const insertOwnerMutation = `
-      mutation InsertOwner($userID: uuid!, $ownerName: String!, $ownerCompany: String!, $ownerIDNumber: String!, $ownerCompanyNumber: String!, $tradingName: String!) {
-        insert_owner_one(object: {  # Changed from insert_Owner_one to insert_owner_one
-          UserID: $userID,
-          OwnerName: $ownerName,
-          OwnerCompany: $ownerCompany,
-          OwnerIDNumber: $ownerIDNumber,
-          OwnerCompanyNumber: $ownerCompanyNumber,
-          TradingName: $tradingName
-        }) {
-          OwnerID
-        }
-      }
-    `;
-    
-  const { error: insertOwnerError } = await nhost.graphql.request(insertOwnerMutation, {
-    userID,
-    ownerName: directorName,
-    ownerCompany: companyName,
-    ownerIDNumber: idNumber,
-    ownerCompanyNumber: companyNumber,
-    tradingName
-  });
-
-  if (insertOwnerError) {
-    console.error('Error inserting into Owner table:', insertOwnerError);
-    setError('Failed to create owner profile.');
-    return;
-  }
-    */
+      });  
 
   
       alert('Check your email to verify your account!');
-      navigate('/');
+     // navigate('/');
     } catch (err) {
       console.error('Sign up error:', err);
       setError('An unexpected error occurred. Please try again.');
