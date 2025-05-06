@@ -1,0 +1,243 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.create-account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative; /* For absolute positioning of back button */
+}
+
+.create-account-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/geometric-pattern-background.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #7a0a0a;
+  color: white;
+  border-color: #7a0a0a;
+}
+
+.account-image {
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  margin-bottom: -10px;
+  filter: invert(60%) sepia(100%) saturate(55000%) hue-rotate(-0deg) brightness(50%) contrast(103%);
+}
+
+.create-account-content-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  min-height: 550px; /* Slightly increased for better spacing */
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+h2 {
+  margin-bottom: 25px;
+  font-size: 24px;
+  color: #333;
+}
+
+.create-account-email-input, .create-account-password-input {
+  width: 80%;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 0 15px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: all 0.3s ease; /* Transition for smooth effect */
+}
+
+.create-account-email-input:hover, 
+.create-account-password-input:hover,
+.create-account-email-input:focus, 
+.create-account-password-input:focus {
+  transform: scale(1.05);
+  border-width: 3px; /* Thicker border on hover/focus */
+  box-shadow: 0 0 8px rgba(122, 10, 10, 0.3);
+  outline: none;
+}
+
+button.login-button {
+  background-color: #9B0D0D;
+  color: white;
+  border: none;
+  padding: 15px 35px; /* Slightly larger padding */
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%; /* Full width button */
+  margin-top: 10px;
+}
+
+button.login-button:hover {
+  background-color: #7a0a0a;
+  transform: scale(1.02);
+}
+
+button.login-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.popup.error {
+  color: #9B0D0D;
+  margin: 10px 0;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+}
+
+.terms-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.circular-checkbox {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #9B0D0D;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+}
+
+.circular-checkbox:checked {
+  background-color: #9B0D0D;
+  border: 2px solid #9B0D0D;
+}
+
+.circular-checkbox:checked::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.terms-link {
+  color: #9B0D0D;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.terms-link:hover {
+  text-decoration: underline;
+}
+
+
+.terms-link:hover {
+  color: #7a0a0a;
+}
+
+/* Popup Styles */
+.terms-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.terms-content {
+  background: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.terms-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.terms-content p, 
+.terms-content ul {
+  font-size: 14px;
+  color: #555;
+}
+
+.terms-content ul {
+  padding-left: 20px;
+}
+
+.terms-content button {
+  background-color: #9B0D0D;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.terms-content button:hover {
+  background-color: #7a0a0a;
+}

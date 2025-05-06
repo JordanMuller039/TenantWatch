@@ -1,0 +1,103 @@
+/* General Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light background for contrast */
+  color: #333; /* Default text color */
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 600px;
+  margin: 20px auto; /* Center horizontally with top/bottom spacing */
+  padding: 20px;
+  background: #fff; /* White background for content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #282c34; /* Darker heading color */
+  text-align: center;
+}
+
+input {
+  width: 100%; /* Full width for inputs */
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%; /* Full width button */
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #61dafb; /* Primary color */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  background-color: #a0d3f8; /* Disabled button color */
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #51c8f1; /* Darker hover color */
+}
+
+/* Error Message */
+.popup.error {
+  color: #d9534f; /* Red for errors */
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  input {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  input {
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px;
+  }
+}

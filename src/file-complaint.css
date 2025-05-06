@@ -1,0 +1,408 @@
+@media (max-width: 768px) {
+  .complaint-form {
+    padding: 15px;
+  }
+
+  .file-complaint-button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .input-field, .slider-container {
+    font-size: 0.9rem;
+  }
+}
+
+/* General container styling */
+.file-complaint-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.file-complaint-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/geometric-pattern-background.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+/* Content box for the complaint form */
+.complaint-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+/* Align the title */
+.complaint-form h2 {
+  color: #9B0D0D;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Material Breach Block Styling */
+.material-breach-block {
+  width: 100%; /* Ensure full width of the parent container */
+  max-width: 760px; /* Constrain max width to align with form */
+  margin: 15px auto; /* Center horizontally */
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.material-breach-block h3 {
+  color: #9B0D0D;
+  margin-bottom: 15px;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+/* Material Breach Chip Group Styles */
+.material-breach-container {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.breach-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-start; /* Align chips to the left */
+}
+
+.breach-chip {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  background-color: white;
+}
+
+.breach-chip:hover {
+  background-color: #f0f0f0;
+  border-color: #9B0D0D;
+}
+
+.breach-chip.selected {
+  background-color: #9B0D0D;
+  color: white;
+  border-color: #9B0D0D;
+}
+
+/* Input fields */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-field:hover {
+  border-color: #9B0D0D;
+  box-shadow: 0 0 5px rgba(155, 13, 13, 0.3);
+}
+
+.input-field:focus {
+  border-color: #9B0D0D;
+  box-shadow: 0 0 5px rgba(155, 13, 13, 0.3);
+}
+
+/* Dropdown (select) styling */
+select.input-field {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+}
+
+/* Button styling for submitting the complaint */
+.file-complaint-button {
+  background-color: #9B0D0D;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.file-complaint-button:hover {
+  background-color: #7a0a0a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Lease Start and End Date Labels */
+.date-label {
+  align-self: flex-start;
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #555;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+/* Date inputs */
+input[type="date"].input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+}
+
+/* SLIDER CSS */
+/*---------------------------------------------------------------------------------*/
+.severity-slider {
+  appearance: none; /* Standard property for cross-browser support */
+  width: 100%;
+  height: 8px; /* Track height */
+  border-radius: 10px; /* Rounded track */
+  background: linear-gradient(to right, #7a0a0a 0%, #7a0a0a var(--slider-fill-percentage), #ddd var(--slider-fill-percentage), #ddd 100%);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s ease; /* Smooth color transition */
+}
+
+/* Calculate the red trail behind the thumb */
+.severity-slider::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #7a0a0a 0%, #7a0a0a var(--slider-fill-percentage), #ddd var(--slider-fill-percentage), #ddd 100%);
+  height: 8px;
+  border-radius: 10px;
+}
+
+/* Slider thumb styling */
+.severity-slider::-webkit-slider-thumb {
+  appearance: none; /* Remove default styling */
+  width: 20px;
+  height: 20px;
+  margin-top: -6px; /* Center the thumb vertically on the track */
+  border-radius: 50%; /* Circular thumb */
+  background: #7a0a0a;
+  border: 2px solid white; /* Add a white border for contrast */
+  cursor: pointer;
+  transition: background 0.3s ease; /* Smooth color transition */
+}
+
+.severity-slider::-webkit-slider-thumb:hover {
+  background: #9B0D0D; /* Darker red on hover */
+}
+
+/* Firefox (Gecko) */
+.severity-slider::-moz-range-track {
+  background: linear-gradient(to right, #7a0a0a 0%, #7a0a0a var(--slider-fill-percentage), #ddd var(--slider-fill-percentage), #ddd 100%);
+  height: 8px;
+  border-radius: 10px;
+}
+
+.severity-slider::-moz-range-progress {
+  background: #7a0a0a; /* Filled portion */
+  height: 8px;
+  border-radius: 10px;
+}
+
+.severity-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #7a0a0a;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: -6px; /* Center thumb vertically */
+}
+
+.severity-slider::-moz-range-thumb:hover {
+  background: #9B0D0D; /* Darker red on hover */
+}
+
+/*---------------------------------------------------------------------------------*/
+
+/* Back Button Styles */
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #888;  /* Grey background */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #666;  /* Darker grey when hovered */
+}
+
+/* Make sure form elements are spaced properly */
+form {
+  width: 100%;
+}
+
+.terms-link {
+  color: #007bff;  /* Set hyperlink color to blue */
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.terms-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.terms-modal-content {
+  background: white;
+  padding: 20px;
+  max-width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1001;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* POPPI Modal Styles */
+.poppi-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Content inside the modal */
+.poppi-content {
+  background-color: #fff;
+  padding: 30px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+/* Heading inside the modal */
+.poppi-content h3 {
+  margin-top: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+/* List of POPPI terms */
+.poppi-content ul {
+  padding-left: 20px;
+}
+
+.poppi-content ul li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Close button for the popup */
+.poppi-content button {
+  background-color: #7a0a0a;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+/* Close button hover effect */
+.poppi-content button:hover {
+  background-color: #7a0a0a;
+}
+
+/* Styles for the checkbox and POPPI link */
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.checkbox-input {
+  margin-right: 10px;
+}
+
+.checkbox-label {
+  font-size: 14px;
+  color: #333;
+}
+
+.poppi-link {
+  color: #7a0a0a;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.poppi-link:hover {
+  color: #7a0a0a;
+  font-weight: bold;
+}
+
